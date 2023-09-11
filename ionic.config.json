@@ -1,0 +1,7 @@
+{
+  "name": "ets-jogo-galo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
