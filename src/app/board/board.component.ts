@@ -14,7 +14,8 @@ export class BoardComponent {
   emptyValue = '';
   winner = '';
   boardSize: number = 0;
-  boardArray: any[] = [];
+  rowCount: number = 0;
+  boardArray: Square[] = [];
   winnerColor = '';
   isCPUToPlay = true;
   playerNumber: number = 1;
@@ -34,6 +35,7 @@ export class BoardComponent {
       this.boardSize = results[0];
       this.playerNumber = results[1];
       this.winnerColor = results[2];
+      this.rowCount = Math.sqrt(this.boardSize);
       this.newGame();
     });
   }
@@ -53,26 +55,32 @@ export class BoardComponent {
     this.boardArray = this.createBoard(this.boardSize);
   }
 
+  getGridStyle() {
+    return {
+      'grid-template-columns': `repeat(${this.rowCount}, 1fr)`
+    };
+  }
+
   checkBoardFull(): boolean {
     return this.boardArray.find(square => square.state === this.emptyValue) ? false : true;
   }
 
   /***
    * 
-   * 0 1 2 3 4 5 6 7 8
-
-
- x * x = y; 
+    3 x 3
 
     0 1 2
     3 4 5
     6 7 8
 
+    4 x 4
 
     0   1   2   3 
     4   5   6   7 
     8   9   10  11
     12  13  14  15
+
+    5 x 5
 
     0  1  2  3  4
     5  6  7  8  9
@@ -81,10 +89,9 @@ export class BoardComponent {
     20 21 22 23 24
 
   */
-  checkEndGame(boardSize: number): boolean {
+  checkEndGame(): boolean {
 
     const firstSquare = this.boardArray[0];
-    const rowCount = Math.sqrt(boardSize);
 
     /* Check horizontal lines */
     if (this.hasEqualLines()) {
@@ -97,7 +104,7 @@ export class BoardComponent {
     }
 
     /* Check diagonal lines */
-    if (this.hasEqualDiagonals(boardSize, rowCount, firstSquare)) {
+    if (this.hasEqualDiagonals(this.boardSize, this.rowCount, firstSquare)) {
       return true;
     }
 
@@ -110,9 +117,8 @@ export class BoardComponent {
   }
 
   hasEqualLines(): boolean {
-    for (let i = 0; i <= 6; i += 3) {
-      let line = this.boardArray.slice(i, i + 3);
-
+    for (let i = 0; i < this.boardSize; i += this.rowCount) {
+      let line = this.boardArray.slice(i, i + this.rowCount);
       let allEqual = line.every(val => val.state && val.state === line[0].state);
       if (allEqual) {
         this.applyWinnerSquareChanges(line);
@@ -123,8 +129,12 @@ export class BoardComponent {
   }
 
   hasEqualColumns(): boolean {
-    for (let i = 0; i < 3; i ++) {
-      let line = [this.boardArray[i], this.boardArray[i + 3], this.boardArray[i + 6]];
+    const columnNumber = this.rowCount * (this.rowCount - 1);
+    for (let i = 0; i < this.rowCount; i ++) {
+      let line: Square[] = [];
+      for (let j = i; j <= i + columnNumber; j += this.rowCount){
+        line.push(this.boardArray[j]);
+      }
       let allEqual = line.every(val => val.state && val.state === line[0].state);
       if (allEqual) {
         this.applyWinnerSquareChanges(line);
@@ -167,7 +177,7 @@ export class BoardComponent {
 
     this.boardArray[square.id].state = this.isXToPlay ? 'X': '0';
     this.isXToPlay = !this.isXToPlay;
-    if (this.checkEndGame(this.boardSize)) {
+    if (this.checkEndGame()) {
       this.isCPUToPlay = true;
       return;
     }

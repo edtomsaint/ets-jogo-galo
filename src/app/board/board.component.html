@@ -5,7 +5,7 @@
     <button type="button" class="btn btn-primary" (click)="newGame()">{{ 'board.newGame' | translate }}</button>
   </section>
 
-  <section class="section-board">
+  <section class="section-board" [ngStyle]="getGridStyle()">
     <div *ngFor="let square of boardArray">
       <div class="square" (click)="squareClick(square)" [style.background-color]="square.background">
         <label class="square-text">{{ square.state }}</label>
