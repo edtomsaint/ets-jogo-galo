@@ -1,0 +1,15 @@
+<div class="board-content">
+  <section class="player-aid">
+    <label *ngIf="winner">{{ 'board.winner' | translate }}: {{ winner }}</label>
+    <label *ngIf="!winner">{{ 'board.nextPlayer' | translate }}: {{ isXToPlay ? 'X': '0' }}</label>
+    <button type="button" class="btn btn-primary" (click)="newGame()">{{ 'board.newGame' | translate }}</button>
+  </section>
+
+  <section class="section-board">
+    <div *ngFor="let square of boardArray">
+      <div class="square" (click)="squareClick(square)" [style.background-color]="square.background">
+        <label class="square-text">{{ square.state }}</label>
+      </div>
+    </div>
+  </section>
+</div>

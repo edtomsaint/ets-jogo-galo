@@ -1,0 +1,17 @@
+{
+    "appTitle": "Jogo do Galo",
+    "menu": {
+        "options": "Opções",
+        "players": "Jogadores",
+        "onePlayer": "Um jogador",
+        "twoPlayers": "Dois jogadores",
+        "language": "Idioma",
+        "pt": "Português",
+        "en": "English"
+    },
+    "board": {
+        "winner": "Vencedor",
+        "nextPlayer": "Próximo jogador",
+        "newGame": "Novo jogo"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "appTitle": "Tic-Tac-Toe",
+    "menu": {
+        "options": "Options",
+        "players": "Players",
+        "onePlayer": "One player",
+        "twoPlayers": "Two players",
+        "language": "Language",
+        "pt": "Português",
+        "en": "English"
+    },
+    "board": {
+        "winner": "Winner",
+        "nextPlayer": "Next player",
+        "newGame": "New game"
+    }
+}

@@ -1,0 +1,36 @@
+.board-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-aid {
+  margin: 2rem 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.section-board {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.square {
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid #9a9a9a;
+  align-items: center;
+  background-color: white;
+}
+
+.square-text {
+  min-height: 1rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  font-size: 14vh;
+}
