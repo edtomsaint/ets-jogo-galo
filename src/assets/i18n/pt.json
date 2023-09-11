@@ -12,6 +12,7 @@
     "board": {
         "winner": "Vencedor",
         "nextPlayer": "Próximo jogador",
-        "newGame": "Novo jogo"
+        "newGame": "Novo jogo",
+        "tie": "Empate"
     }
 }

@@ -19,6 +19,7 @@ export class BoardComponent {
   winnerColor = '';
   isCPUToPlay = true;
   playerNumber: number = 1;
+  tieText = 'board.tie';
   
   constructor(private gameService: GameService) {
     this.getGameValues();
@@ -108,7 +109,7 @@ export class BoardComponent {
     }
 
     if (this.checkBoardFull()) {
-      this.winner = 'Tie!';
+      this.winner = this.tieText;
       return true;
     }
 

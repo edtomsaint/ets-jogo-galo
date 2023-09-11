@@ -12,6 +12,7 @@
     "board": {
         "winner": "Winner",
         "nextPlayer": "Next player",
-        "newGame": "New game"
+        "newGame": "New game",
+        "tie": "Tie"
     }
 }
