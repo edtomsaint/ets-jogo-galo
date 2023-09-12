@@ -1,0 +1,35 @@
+<ion-menu side="end" contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>{{ 'menu.options' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>{{ 'menu.players' | translate }}</ion-label>
+      </ion-list-header>
+      <ion-item (click)="playersOptionClicked(1)">
+        <ion-icon [name]="playerNumber === 1 ? 'ellipse' : 'ellipse-outline'"></ion-icon>
+        <ion-label>{{ 'menu.onePlayer' | translate }}</ion-label>
+      </ion-item>
+      <ion-item (click)="playersOptionClicked(2)">
+        <ion-icon [name]="playerNumber === 2 ? 'ellipse' : 'ellipse-outline'"></ion-icon>
+        <ion-label>{{ 'menu.twoPlayers' | translate }}</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>{{ 'menu.language' | translate }}</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <div class="d-flex justify-content-between w-100">
+          <button type="button" class="btn" [ngClass]="currentLanguage === 'pt' ? 'btn-primary' : 'btn-outline-primary'" 
+          (click)="languageOptionClicked('pt')">{{ 'menu.pt' | translate }}</button>
+          <button type="button" class="btn" [ngClass]="currentLanguage === 'en' ? 'btn-primary' : 'btn-outline-primary'"
+           (click)="languageOptionClicked('en')">{{ 'menu.en' | translate }}</button>
+        </div>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

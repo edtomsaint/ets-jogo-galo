@@ -7,6 +7,7 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { BoardComponent } from '../board/board.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MainMenuComponent } from '../main-menu/main-menu.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { TranslateModule } from '@ngx-translate/core';
     HomePageRoutingModule,
     TranslateModule
   ],
-  declarations: [HomePage, BoardComponent]
+  declarations: [HomePage, BoardComponent, MainMenuComponent]
 })
 export class HomePageModule {}
